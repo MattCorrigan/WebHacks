@@ -55,7 +55,9 @@ app.get('/prospectus', function(req, res) {
   res.sendfile(__dirname + '/prospectus/index.html');
 })
 
-app.listen(process.env.PORT, function () {
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+app.listen(port, ipaddress, function() {
   console.log('[+] Started');
 });
 
