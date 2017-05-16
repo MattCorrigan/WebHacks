@@ -1,0 +1,12 @@
+TODOLIST
+
+- website
+    * description
+    * schedule
+    * prizes/categories
+    - sign up
+    - faq/rules
+- marketing for users
+- social media?
+- start + host event
+- blog afterwards

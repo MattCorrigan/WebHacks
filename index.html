@@ -1,0 +1,154 @@
+<!DOCTPYE html>
+
+<html>
+
+    <head>
+        <meta name="description" content="An online hackathon for modern web developers.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="web, hacks, hackathon, 2017, online, virtual, development">
+        <meta charset="utf">
+        
+        <title>Web Hacks 2017</title>
+        
+        <link rel="stylesheet" href="main.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <div class="header">
+            <div class="left">
+                <h1>WebHacks 2017</h1>
+                <h3>August 6 - August 12</h3>
+            
+                <p>WebHacks aims to be the first well-constructed online hackathon. Our vision is to enable anyone to participate in a coding competition, without the need for travel expenses. We hope to create an online community that builds healthy competition and awesome projects!
+                <a href="#register">Register</a></p>
+                
+            </div>
+        </div>
+        
+        <div class="description">
+            <h2>How It Works</h2>
+            <p>Participants get a week to design and build the most amazing website they can. Focus should be on the design and the function of the website, and points will be awarded accordingly. At the end of the week, participants must upload a link to their work for the judges to demo. Make sure to check out the judging and prizes below!</p>
+            <a href="mailto:matt@webhacks.tech">Questions? Shoot us an email.</a>
+        </div>
+        
+        <div class="prizes">
+            
+        </div>
+        
+        <div class="schedule">
+            <h2>Schedule</h2>
+            <p>August 6 - August 12</p>
+            
+            <div class="event">
+                <p class="time">Sunday @ 6am</p>
+                <p>Coding Begins!</p>
+            </div>
+            
+            <div class="event">
+                <p class="time">Tuesday</p>
+                <p>Mini Code Challenge</p>
+            </div>
+            
+            <div class="event">
+                <p class="time">Thursday</p>
+                <p>Mini Code Challenge</p>
+            </div>
+            
+            <div class="event">
+                <p class="time">Saturday @ 6pm</p>
+                <p>Final Submissions</p>
+            </div>
+            
+            <div class="event">
+                <p class="time">Sunday @ Noon</p>
+                <p>Winners Announced</p>
+            </div>
+            
+            <p class="timezone">All times are in </b>Central Daylight Time, UTC-5</b></p>
+        </div>
+        
+        <!--div class="sponsors">
+            <h3>Sponsors</h3>
+        </div-->
+        
+        <div class="prizes">
+            <h2>Prizes</h2>
+            <div class="prize first-place">
+                <div class="prize-container">
+                    <div style="text-align: center;color:#5c92e8"><div class="hexagon"></div><p class="prize-num">1st</p></div>
+                
+                    <h3>3 Free Domain Names</h3>
+                </div>
+            </div>
+            
+            <div class="prize second-place">
+                <div class="prize-container">
+                    <div style="text-align: center;color:#e05341"><div class="hexagon"></div><p class="prize-num">2nd</p></div>
+                    
+                    <h3>2 Free Domain Names</h3>
+                </div>
+            </div>
+            
+            <div class="prize third-place" style="margin-bottom:50px;">
+                <div class="prize-container">
+                    <div style="text-align: center;color:#46af42"><div class="hexagon"></div><p class="prize-num">3rd</p></div>
+                    
+                    <h3>1 Free Domain Name</h3>
+                    </div>
+            </div>
+            
+            <br>
+        </div>
+        
+        <div class="register" id="register">
+            <h3>Register</h3>
+            <form method="GET" action="./register">
+                <input class="half" type="text" name="fn" placeholder="First Name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><input class="half" type="text" name="ln" placeholder="Last Name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><br><!--
+                --><input type="text" name="e" placeholder="Email" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <input type="submit" class="register-button" text="Register"></a>
+            </form>
+        </div>
+        
+        <div class="footer">
+            <p>Copyright 2k17. All Rights Reserved.</p>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+        
+        <script>
+            var background = document.getElementsByClassName('header')[0];
+            var height = window.innerHeight;
+
+            var pattern = GeoPattern.generate('GitHub', {color: "#fca428"});
+            $('.schedule').css('background-image', pattern.toDataUrl());
+            
+            var pattern = GeoPattern.generate('jdhfmahfjsaj', {color: "#333", generator: "triangles"});
+            $('.register').css('background-image', pattern.toDataUrl());
+            
+            /*var pattern = GeoPattern.generate('GitHub', {color: "#fca428", generator: "squares"});
+            $('.prizes').css('background-image', pattern.toDataUrl());*/
+
+            // Fix background image jump on mobile
+            if ((/iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+            
+              window.onresize = sizeBackground;
+              sizeBackground();
+            }
+            
+            document.addEventListener('orientationchange', function() { height = window.innerHeight; });
+            
+            function sizeBackground() {
+              background.style.height = height;
+            }
+        </script>
+        
+    </body>
+
+</html>
+
+
