@@ -25,6 +25,10 @@ app.get('/rocket.jpg', function(req, res) {
   res.sendfile(__dirname + "/rocket.jpg");
 });
 
+app.get('/favicon.ico', function(req, res) {
+  res.sendfile(__dirname + "/favicon.ico");
+});
+
 function subscribe(email, firstName, lastName) {
   
   var body = {};
