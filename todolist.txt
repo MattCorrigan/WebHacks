@@ -4,9 +4,13 @@ TODOLIST
     * description
     * schedule
     * prizes/categories
-    - sign up
+    * sign up
+    * logos
+    - prospectus
     - faq/rules
+    - swag bag
 - marketing for users
-- social media?
+    * HackAList
+    - others...
 - start + host event
 - blog afterwards

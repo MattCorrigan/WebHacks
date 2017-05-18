@@ -17,9 +17,13 @@
     
     <body>
         <span>WebHacks 2017</span>
-        <hr>
+        <span class="date">August 6th - August 12th</span>
+        <hr><!--
+        
+        --><img src="./webhacks.png">
+        
         <h3>What is WebHacks?</h3>
-        <p>WebHacks aims to create a community of hackers from all around the globe that unite to build amazing projects. Applicants can be teamed up, and are given one week to code the most awesome website they can think of. By creating the hackathon online, our hope is to make coding competitions accessible to everyone, while still providing the full hackathon experience.</p>
+        <p>WebHacks aims to create a community of hackers from all around the globe that unite to build amazing projects. Applicants can be teamed up, and are given one week to code the most awesome website they can think of. By creating the hackathon online, our hope is to make coding competitions accessible to everyone, while still providing the full hackathon experience. WebHacks will run from August 6th, 2017, to August 12th, 2017. Participants will be given the whole week to join teams, create their projects, and submit a demo for the judges.</p>
         
         <h3>Why Sponsor WebHacks?</h3>
         <p>WebHacks needs no funding at all, which means we can focus on providing an easy and beneficial sponsoring experience to all our potential sponsors. Furthermore, since our event is hosted online, there is almost no limit on signups, meaning your brand can reach hundreds of participants. Being a sponsor means promoting your brand for little to no cost.</p>
@@ -34,6 +38,12 @@
             <li>Included in a mass email about sponsors</li>
         </ul>
         <p>Questions? Send an email to <a href="mailto:matt@webhacks.tech">matt@webhacks.tech</a> for anything you need.</p>
+        
+        <div class="info">
+            <p>WebHacks 2017</p>
+            <a href="https://webhacks.tech">webhacks.tech</a>
+            <a href="mailto:matt@webhacks.tech">matt@webhacks.tech</a>
+        </div>
         
         <style>
             * {
@@ -50,9 +60,22 @@
                 color: #fca428;
             }
             
+            span.date {
+                float: right;
+            }
+            
             hr {
                 border:0;
-                border-top: 2px solid #fca428;
+                border-top: 5px solid #fca428;
+                margin:0;
+                margin-top: 10px;
+            }
+            
+            img {
+                display: block;
+                margin: 0 auto;
+                padding: 10px 30px;
+                background-color: #fca428;
             }
             
             p {
@@ -61,11 +84,27 @@
             }
             
             h3 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+                color: #222;
             }
             
             a {
                 color: #fca428;
+            }
+            
+            .info {
+                margin-top: 50px;
+                color: #888;
+            }
+            
+            .info p {
+                margin: 0;
+                color: #888;
+            }
+            
+            .info a {
+                color: #888;
+                display: block;
             }
         </style>
         

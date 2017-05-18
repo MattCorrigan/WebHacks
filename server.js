@@ -33,6 +33,10 @@ app.get("/googleb72043df3ff44b11.html", function(req, res) {
   res.sendfile(__dirname + "/googleb72043df3ff44b11.html");
 });
 
+app.get("/webhacks.png", function(req, res) {
+  res.sendfile(__dirname + "/webhacks.png");
+})
+
 function subscribe(email, firstName, lastName) {
   
   var body = {};
