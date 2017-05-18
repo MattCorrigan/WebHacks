@@ -29,6 +29,10 @@ app.get('/favicon.ico', function(req, res) {
   res.sendfile(__dirname + "/favicon.ico");
 });
 
+app.get("googleb72043df3ff44b11.html", function(req, res) {
+  res.sendfile("googleb72043df3ff44b11.html");
+});
+
 function subscribe(email, firstName, lastName) {
   
   var body = {};
