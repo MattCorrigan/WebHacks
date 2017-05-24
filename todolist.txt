@@ -6,9 +6,10 @@ TODOLIST
     * prizes/categories
     * sign up
     * logos
-    - prospectus
-    - faq/rules
+    * prospectus
+    * faq/rules
     - swag bag
+    - finalize prizes
 - marketing for users
     * HackAList
     - others...

@@ -10,6 +10,9 @@
   "author": "Matt Corrigan",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.2",
+    "cookie": "^0.3.1",
     "express": "~3.2.4",
     "needle": "^1.6.0"
   }

@@ -1,41 +1,47 @@
 var express = require('express');
 var app = express();
 var needle = require("needle");
+var bcrypt = require("bcrypt");
+var bodyParser = require('body-parser');
+var cookie = require("cookie");
 
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'sql9.freemysqlhosting.net',
+  user     : 'sql9175439',
+  password : 'ZBXpgItsET',
+  database : 'sql9175439'
+});
+ 
+connection.connect();
+ 
+function query(q, callback) {
+  connection.query(q, function (error, results, fields) {
+    if (error) throw error;
+    callback(results);
+  });
+}
 
-var User = function(email) {
+var genSID = function() {
+  var sid = "";
+  for (var i = 0; i < 15; i++) {
+    sid += Math.floor(Math.random() * 9);
+  }
+  return sid;
+}
+
+var User = function(username, email, fn, ln) {
+  this.username = username;
   this.email= email;
+  this.firstname = fn;
+  this.lastname = ln;
+  this.sid = genSID();
 };
 
 var users = [];
 
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + "/index.html");
-});
-
-app.get('/index.html', function (req, res) {
-  res.sendfile(__dirname + "/index.html");
-});
-
-app.get('/main.css', function (req, res) {
-  res.sendfile(__dirname + "/main.css");
-});
-
-app.get('/rocket.jpg', function(req, res) {
-  res.sendfile(__dirname + "/rocket.jpg");
-});
-
-app.get('/favicon.ico', function(req, res) {
-  res.sendfile(__dirname + "/favicon.ico");
-});
-
-app.get("/googleb72043df3ff44b11.html", function(req, res) {
-  res.sendfile(__dirname + "/googleb72043df3ff44b11.html");
-});
-
-app.get("/webhacks.png", function(req, res) {
-  res.sendfile(__dirname + "/webhacks.png");
-})
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 function subscribe(email, firstName, lastName) {
   
@@ -63,9 +69,103 @@ app.get('/register', function (req, res) {
   res.redirect('../');
 });
 
-app.get('/prospectus', function(req, res) {
-  res.sendfile(__dirname + '/prospectus/index.html');
-})
+function escape(text) {
+  return mysql.escape(text); // just making the function call shorter and easier to understand
+}
+
+function isUsernameTaken(name, callback) {
+  query("SELECT * FROM Users WHERE Username = " + escape(name), function(results) {
+    if (results.length == 0) {
+      callback(false);
+      return;
+    }
+    callback(true);
+  });
+}
+
+function isEmailTaken(email, callback) {
+  query("SELECT * FROM Users WHERE Email = " + escape(email), function(results) {
+    if (results.length == 0) {
+      callback(false);
+      return;
+    }
+    callback(true);
+  });
+}
+
+function addUser(firstName, lastName, username, email, password) {
+  var hashedPass = bcrypt.hashSync(password, 10);
+  connection.query("INSERT INTO Users (`Username`, `Password`, `Email`, `First`, `Last`) VALUES (?, ?, ?, ?, ?);", [username, hashedPass, email, firstName, lastName], function(err, results) {
+    if (err) { throw err; }
+  });
+}
+
+app.get('/createAccount', function (req, res) {
+  if (req.query.fn && req.query.ln && req.query.u && req.query.p && req.query.e) {
+    isUsernameTaken(req.query.u, function(isTaken) {
+      if (isTaken) {
+        res.redirect("/create/?error=2");
+        return;
+      } else {
+        isEmailTaken(req.query.e, function(isTaken) {
+          
+          if (isTaken) {
+            res.redirect('/create/?error=3');
+            return;
+          } else {
+            addUser(req.query.fn, req.query.ln, req.query.u, req.query.e, req.query.p);
+            res.redirect('../login');
+            return;
+          }
+        });
+      }
+    });
+  } else {
+    res.redirect('/create/?error=1');
+    return;
+  }
+});
+
+function login(username, password, callback) {
+  connection.query("SELECT * from Users WHERE Username = ?", [username], function(err, results) {
+    if (results.length == 0) {
+      // no such username
+      callback(false);
+      return;
+    }
+    
+    var user = results[0];
+    
+    if (!bcrypt.compareSync(password, user.Password)) {
+      // incorrect password
+      callback(false);
+      return;
+    }
+    
+    callback(true, user.Username, user.Email, user.Firstname, user.Lastname);
+    
+  });
+}
+
+app.post('/login', function(req, res) {
+  if (req.body.u && req.body.p) {
+    login(req.body.u, req.body.p, function(loggedIn, username, email, fn, ln) {
+      if (!loggedIn) {
+        res.redirect("./?error=2");
+        return;
+      }
+      var u = new User(username, email, fn, ln);
+      users.push(u);
+      res.setHeader('Set-Cookie', cookie.serialize('SID', u.sid, {
+        httpOnly: false,
+        maxAge: 60 * 60 * 24 * 7 // 1 week 
+      }));
+      res.redirect("../dashboard");
+    });
+  } else {
+    res.redirect("./?error=1");
+  }
+});
 
 app.listen(process.env.PORT, function() {
   console.log('[+] Started');

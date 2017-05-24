@@ -1,0 +1,90 @@
+<!DOCTPYE html>
+
+<html>
+
+    <head>
+        <meta name="description" content="An online hackathon for modern web developers.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="web, hacks, hackathon, 2017, online, virtual, development">
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#fca428" />
+        
+        <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2" />
+        
+        <title>WebHacks 2017</title>
+        
+        <link rel="stylesheet" href="dashboard.css">
+        <link rel="stylesheet" href="../navbar.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        <script>
+        
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        
+            if (getCookie("SID").length == 0) {
+                location.href = "../login";
+            }
+            
+            
+        </script>
+        
+        <div class="navbar">
+            <h2><i class="fa fa-rocket"></i> WebHacks 2017</h2>
+            <div class="links">
+                <a href="../">Home</a>
+                <a href="#">Dashboard</a>
+                <a href="#">My Profile</a>
+                <a class="button" href="#">Sign Out</a>
+            </div>
+            <i class="fa fa-bars hidden" id="toggle-nav" style="z-index:100;"></i>
+        </div>
+        
+        <div class="left">
+            <div class="publish">
+                <h3>Publish a Project</h3>
+                <input type="text" placeholder="Project URL" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                <input type="submit" class="button" value="Publish Project"></a>
+            </div>
+            
+            <div class="projects">
+                <h2>Projects</h2>
+                
+                <div class="project">
+                    <img src="http://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg" style="object-fit: cover;width: 200px; height: 200px;">
+                    <div class="content">
+                        <h3>Sample Project</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae lacinia lacus. Vestibulum ornare purus quis vulputate tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sed tincidunt risus. Nulla fringilla, nulla id vulputate auctor, nisi mauris malesuada est, eget venenatis dui diam quis metus.</p>
+                    </div>
+                </div>
+                
+                <div class="project">
+                    <img src="http://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg" style="object-fit: cover;width: 200px; height: 200px;">
+                    <div class="content">
+                        <h3>Sample Project</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae lacinia lacus. Vestibulum ornare purus quis vulputate tincidunt. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sed tincidunt risus. Nulla fringilla, nulla id vulputate auctor, nisi mauris malesuada est, eget venenatis dui diam quis metus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="../navbar.js"></script>
+    </body>
+    
+</html>

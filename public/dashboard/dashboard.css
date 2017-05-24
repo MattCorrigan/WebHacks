@@ -1,0 +1,97 @@
+html, body {
+    overflow-x: hidden;
+    background-color: #f3f3f3;
+}
+
+.left {
+    width: 66.7vw;
+}
+
+.projects {
+    padding: 50px;
+    padding-top: 0;
+}
+
+.projects h2 {
+    margin: 15px 0;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.projects .project {
+    width: 100%;
+    position: relative;
+    margin-bottom: 75px;
+}
+
+.projects .project .content {
+    position: absolute;
+    top: 0px;
+    left: 220px;
+}
+
+.projects .project .content h3 {
+    margin-top: 5px;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/*
+max number of characters should be 175-200? maybe 250 in real use?
+*/
+.projects .project .content p {
+    line-height: 1.75rem;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+.publish {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 50px;
+    padding: 35px;
+}
+
+.publish h3 {
+    text-align: center;
+    font-size: 2rem;
+    padding-bottom: 15px;
+}
+
+.publish input {
+    width: 80%;
+    padding: 15px;
+    outline-width: 0;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    outline-width: 0;
+    display: block;
+    margin: 10px auto;
+    transition: 0.333s;
+}
+
+.publish .button {
+    display: block;
+    margin: 20px auto;
+    width: 80%;
+    background-color: #fca428;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    transition: 0.5;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.333s;
+    border:0;
+    color: white;
+    cursor: pointer;
+}
+
+.publish input:focus {
+    border-color: #fca428;
+}
+
+.publish .button:hover {
+    background-color: #e38b0f;
+}
