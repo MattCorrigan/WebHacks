@@ -79,6 +79,14 @@ html, body {
 }
 
 .header a {
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    margin-top: 15px;
+}
+
+.header .orange-button {
     margin: 0 auto;
     border: 2px solid #fca428;
     border-radius:4px;
@@ -93,7 +101,7 @@ html, body {
     font-weight:bold;
 }
 
-.header a:hover {
+.header .orange-button:hover {
     background-color: #fca428;
     color: #fefefe;
 }
