@@ -12,6 +12,24 @@ var connection = mysql.createConnection({
   password : 'ZBXpgItsET',
   database : 'sql9175439'
 });
+
+function parseCookies (request) {
+    var list = {},
+        rc = request.headers.cookie;
+
+    rc && rc.split(';').forEach(function( cookie ) {
+        var parts = cookie.split('=');
+        list[parts.shift().trim()] = decodeURI(parts.join('='));
+    });
+
+    return list;
+}
+
+function assertLoggedIn(req, res) {
+  var sid = parseCookies(req);
+  console.log(sid);
+  return true;
+}
  
 connection.connect();
  
@@ -167,8 +185,15 @@ app.post('/login', function(req, res) {
   }
 });
 
+app.get('./dashboard', function(req, res) {
+  console.log("hello");
+  if(assertLoggedIn(req, res)) {
+    res.sendfile(__dirname + "/dashboard/index.html");
+  }
+});
+
 app.listen(process.env.PORT, function() {
-  console.log('[+] Started');
+  console.log('[+] Started Server');
 });
 
 

@@ -95,3 +95,9 @@ max number of characters should be 175-200? maybe 250 in real use?
 .publish .button:hover {
     background-color: #e38b0f;
 }
+
+@media screen and (max-width: 1025px) {
+    .left {
+        width: 100vw;
+    }
+}
