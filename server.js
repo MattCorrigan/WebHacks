@@ -8,9 +8,9 @@ var cookie = require("cookie");
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'sql9.freemysqlhosting.net',
-  user     : 'sql9175439',
-  password : 'ZBXpgItsET',
-  database : 'sql9175439'
+  user     : 'sql9184046',
+  password : '6wzazXi8NV',
+  database : 'sql9184046'
 });
 
 function parseCookies (request) {
