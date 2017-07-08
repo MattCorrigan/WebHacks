@@ -84,7 +84,7 @@ app.get('/register', function (req, res) {
     console.log(req.query.e + " has registered!");
     subscribe(req.query.e, req.query.fn, req.query.ln);
   }
-  res.redirect('../');
+  res.redirect('../thanks/');
 });
 
 function escape(text) {

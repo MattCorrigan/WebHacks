@@ -1,0 +1,128 @@
+<!DOCTPYE html>
+
+<html>
+
+    <head>
+        <meta name="description" content="An online hackathon for modern web developers.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="web, hacks, hackathon, 2017, online, virtual, development">
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#fca428" />
+        
+        <link rel="icon" type="image/x-icon" href="./favicon.ico?v=2" />
+        
+        <title>WebHacks 2017</title>
+        
+        <link rel="stylesheet" href="../main.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    </head>
+
+    <body>
+        
+        <div class="thanks">
+            <div class="content">
+                <h2>Thanks for Signing Up!</h2>
+                <p>Make sure to <a href="https://twitter.com/WebHacks2017">follow us on Twitter</a> for updates. We look forward to seeing some amazing projects!</p>
+                <a class="button" href="../">Back to Home</a>
+            </div>
+        
+            <div class="footer">
+                <p>Copyright 2k17. All Rights Reserved.</p>
+            </div>
+        </div>
+        
+        <style>
+        
+            .thanks {
+                height: 100%;
+                max-height: 100vh;
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+            }
+        
+            .content {
+                width: 900px;
+                max-width: 90%;
+                margin: 0 auto;
+                border: 3px dashed #ccc;
+                padding: 60px 40px;
+                padding-bottom: 25px;
+                position: relative;
+                top: -20px;
+            }
+            
+            .content h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .content a {
+                color: #fca428;
+            }
+            
+            .button {
+                text-align: center;
+                margin: 20px auto;
+                margin-top: 40px;
+                background-color: #fca428;
+                padding: 15px 25px;
+                color: #fff !important;
+                text-decoration: none;
+                display: block;
+                width: 200px;
+            }
+            
+            .footer {
+                position: absolute;
+                bottom: 0;
+                width: 100vw;
+            }
+        </style>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+        
+        <script>
+            var background = document.getElementsByClassName('header')[0];
+            var height = window.innerHeight;
+
+            var pattern = GeoPattern.generate('GitHub', {color: "#fca428"});
+            $('.schedule').css('background-image', pattern.toDataUrl());
+            
+            var pattern = GeoPattern.generate('jdhfmahfjsaj', {color: "#333", generator: "triangles"});
+            $('.register').css('background-image', pattern.toDataUrl());
+            
+            /*var pattern = GeoPattern.generate('GitHub', {color: "#fca428", generator: "squares"});
+            $('.prizes').css('background-image', pattern.toDataUrl());*/
+
+            // Fix background image jump on mobile
+            if ((/iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+            
+              window.onresize = sizeBackground;
+              sizeBackground();
+            }
+            
+            document.addEventListener('orientationchange', function() { height = window.innerHeight; });
+            
+            function sizeBackground() {
+              background.style.height = height;
+            }
+        </script>
+        <script src="https://use.fontawesome.com/d0bc9af035.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-58043933-4', 'auto');
+          ga('send', 'pageview');
+        
+        </script>
+        
+    </body>
+
+</html>
+
+
