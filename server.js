@@ -144,6 +144,10 @@ app.get('/createAccount', function (req, res) {
   }
 });
 
+app.post('/publish', function(req, res) {
+  res.send("in dev");
+});
+
 function login(username, password, callback) {
   connection.query("SELECT * from Users WHERE Username = ?", [username], function(err, results) {
     if (results.length == 0) {

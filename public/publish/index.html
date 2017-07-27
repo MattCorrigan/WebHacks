@@ -13,7 +13,7 @@
         
         <title>WebHacks 2017</title>
         
-        <link rel="stylesheet" href="dashboard.css">
+        <link rel="stylesheet" href="publish.css">
         <link rel="stylesheet" href="../navbar.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
     </head>
@@ -56,30 +56,49 @@
             <i class="fa fa-bars hidden" id="toggle-nav" style="z-index:100;"></i>
         </div>
         
-        <div class="left">
-            <div class="publish">
-                <h3>Publish a Project</h3>
-                <p>Ready to show off your work?</p>
-                <a href="../publish" class="button">Add a Project</a>
-            </div>
-            
-            <div class="projects">
-                
-                <h2>Projects</h2>
-                
-                <div class="project">
-                    <p class="users">@MattCorrigan, @Bob123</p>
-                    <hr>
-                    <img src="http://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_dx_18-140mmf_35-56g_ed_vr/img/sample/sample1_l.jpg" class="proj-img">
-                    <div class="content">
-                        <h3>Sample Project</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                    <hr>
-                    <div class="icon upvote"><i class="fa fa-thumbs-up"></i> Upvote</div><div class="icon view-website"><i class="fa fa-eye"></i> View Website</div><div class="icon details"><i class="fa fa-book"></i> More Details</div>
-                </div>
-            </div>
+        <div class="container">
+            <h2>Submit Project</h2>
+            <form method="POST" action="../publish">
+                <input type="text" name="pname" placeholder="Project Name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><input type="text" name="plink" placeholder="Link, ex: 'https://myproject.com'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><input type="text" name="pgithub" placeholder="Github Repo (optional)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><p>Project Image:</p>
+                <input type="file" name="pimage" accept="image/*"><!--
+                --><textarea name="pdesc" placeholder="Put a description here..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                <input type="submit" class="submit-button" value="Submit"></a>
+            </form>
         </div>
+        
+        <div class="error hidden">Error</div>
+        
+        <script>
+            function findGetParameter(parameterName) {
+                var result = null,
+                    tmp = [];
+                location.search
+                .substr(1)
+                    .split("&")
+                    .forEach(function (item) {
+                    tmp = item.split("=");
+                    if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                });
+                return result;
+            }
+            
+            function showError(msg) {
+                var errorElem = document.getElementsByClassName("error")[0];
+                errorElem.textContent = "Error: " + msg;
+                errorElem.classList.remove("hidden");
+                document.getElementsByClassName("container")[0].style.marginBottom = "100px";
+            }
+            
+            var error = findGetParameter("error");
+            
+            if (error == "1") {
+                showError("Make sure all required fields are filled out.");
+            }
+            
+        </script>
         
         <script src="../navbar.js"></script>
         <script src="https://use.fontawesome.com/d0bc9af035.js"></script>
