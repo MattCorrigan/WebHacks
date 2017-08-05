@@ -1,0 +1,118 @@
+<!DOCTPYE html>
+
+<html>
+
+    <head>
+        <meta name="description" content="An online hackathon for modern web developers.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="web, hacks, hackathon, 2017, online, virtual, development">
+        <meta charset="utf-8">
+        <meta name="theme-color" content="#fca428" />
+        
+        <link rel="icon" type="image/x-icon" href="../favicon.ico?v=2" />
+        
+        <title>WebHacks 2017</title>
+        
+        <link rel="stylesheet" href="publish.css">
+        <link rel="stylesheet" href="../navbar.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        <script>
+        
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        
+            if (getCookie("SID").length == 0) {
+                location.href = "../login";
+            }
+            
+            
+        </script>
+        
+        <div class="navbar">
+            <h2><i class="fa fa-rocket"></i> WebHacks 2017</h2>
+            <div class="links">
+                <a href="../">Home</a>
+                <a href="#">Dashboard</a>
+                <a href="#">My Profile</a>
+                <a class="button" href="#" onclick="document.cookie = 'SID=null; path=/; expires=Thu, 18 Dec 2013 12:00:00 UTC';location.href = location.href;">Sign Out</a>
+            </div>
+            <i class="fa fa-bars hidden" id="toggle-nav" style="z-index:100;"></i>
+        </div>
+        
+        <div class="container">
+            <h2>Submit Project</h2>
+            <form method="POST" action="../publishProj">
+                <input type="text" name="pname" placeholder="Project Name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><input type="text" name="plink" placeholder="Link, ex: 'https://myproject.com'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><input type="text" name="pgithub" placeholder="Github Repo (optional)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><textarea name="pdesc" placeholder="Put a description here..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                <input type="submit" class="submit-button" value="Submit Project"></a>
+            </form>
+        </div>
+        
+        <div class="error hidden">Error</div>
+        
+        <script>
+            function findGetParameter(parameterName) {
+                var result = null,
+                    tmp = [];
+                location.search
+                .substr(1)
+                    .split("&")
+                    .forEach(function (item) {
+                    tmp = item.split("=");
+                    if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+                });
+                return result;
+            }
+            
+            function showError(msg) {
+                var errorElem = document.getElementsByClassName("error")[0];
+                errorElem.textContent = "Error: " + msg;
+                errorElem.classList.remove("hidden");
+                document.getElementsByClassName("container")[0].style.marginBottom = "100px";
+            }
+            
+            var error = findGetParameter("error");
+            
+            if (error == "1") {
+                showError("Make sure all required fields are filled out.");
+            } else if (error == "2") {
+                showError("You have already published a project. Redirecting to dashboard...");
+                setTimeout(function() {location.href="../dashboard"}, 5000);
+            }
+            
+        </script>
+        
+        <script src="../navbar.js"></script>
+        <script src="https://use.fontawesome.com/d0bc9af035.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-58043933-4', 'auto');
+          ga('send', 'pageview');
+        
+        </script>
+    </body>
+    
+</html>

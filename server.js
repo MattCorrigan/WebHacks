@@ -25,10 +25,20 @@ function parseCookies (request) {
     return list;
 }
 
-function assertLoggedIn(req, res) {
-  var sid = parseCookies(req);
-  console.log(sid);
-  return true;
+var assertLoggedIn = function(req, res) {
+  var sid = parseCookies(req)["SID"];
+  
+  if (sid == undefined) {
+    return undefined;
+  }
+  
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].sid == sid) {
+      return users[i];
+    }
+  }
+  
+  return undefined;
 }
  
 connection.connect();
@@ -48,7 +58,7 @@ var genSID = function() {
   return sid;
 }
 
-var User = function(username, email, fn, ln) {
+var User = function(username, email, fn, ln, sid) {
   this.username = username;
   this.email= email;
   this.firstname = fn;
@@ -80,7 +90,6 @@ function subscribe(email, firstName, lastName) {
 
 app.get('/register', function (req, res) {
   if (req.query.e && req.query.fn && req.query.ln) {
-    users.push(new User(req.query.e));
     console.log(req.query.e + " has registered!");
     subscribe(req.query.e, req.query.fn, req.query.ln);
   }
@@ -144,8 +153,33 @@ app.get('/createAccount', function (req, res) {
   }
 });
 
-app.post('/publish', function(req, res) {
-  res.send("in dev");
+app.get("/publish", function(req, res) {
+  var user = assertLoggedIn(req, res);
+  if(user !== undefined) {
+    res.sendfile("./public/publish/publish.html");
+  } else {
+    res.redirect("../login");
+  }
+});
+
+var addProject = function(username, name, link, github, desc) {
+  connection.query("INSERT INTO Projects (`Username`, `Title`, `Link`, `GitHub`, `Description`) VALUES (?, ?, ?, ?, ?);", [username, name, link, github, desc], function(err, results) {
+    if (err) { throw err; }
+  });
+}
+
+app.post('/publishProj', function(req, res) {
+  var user = assertLoggedIn(req, res);
+  if(user !== undefined) {
+    if (req.body.pname && req.body.plink && req.body.pgithub && req.body.pdesc) {
+      var added = addProject(user.username, req.body.pname, req.body.plink, req.body.pgithub, req.body.pdesc);
+      res.redirect("../dashboard");
+    } else {
+      res.redirect("../publish?error=1");
+    }
+  } else {
+    res.redirect("../login");
+  }
 });
 
 function login(username, password, callback) {
@@ -189,10 +223,12 @@ app.post('/login', function(req, res) {
   }
 });
 
-app.get('./dashboard', function(req, res) {
-  console.log("hello");
-  if(assertLoggedIn(req, res)) {
-    res.sendfile(__dirname + "/dashboard/index.html");
+app.get('/dashboard/', function(req, res) {
+  var user = assertLoggedIn(req, res);
+  if(user !== undefined) {
+    res.sendfile("./public/dashboard/dashboard.html");
+  } else {
+    res.redirect("../login");
   }
 });
 

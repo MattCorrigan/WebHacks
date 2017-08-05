@@ -291,6 +291,15 @@ html, body {
     line-height: 0px;
 }
 
+.custom .prize-container .prize-num {
+    line-height: 40px !important;
+    position: static !important;
+}
+
+.custom {
+    border-bottom: 2px solid #ccc;
+}
+
 @media screen and (max-width: 1185px) {
     .prizes .prize {
         display: block;
