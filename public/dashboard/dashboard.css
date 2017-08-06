@@ -86,10 +86,21 @@ html, body {
     border-right: 0;
 }
 
+.projects a {
+    color: black;
+    text-decoration: none;
+    transition: 0.333s;
+    cursor: pointer;
+}
+
+.projects a:hover {
+    color: #fca428;
+    filter: brightness(80%);
+}
 
 
 
-.publish {
+.publish, .redeem {
     background-color: #fff;
     border: 2px solid #ccc;
     margin: 50px;
@@ -97,22 +108,21 @@ html, body {
     position: relative;
 }
 
-.publish h3 {
+.publish h3, .redeem h3 {
     font-size: 1.75rem;
     margin-bottom: 7px;
 }
 
-.publish p {
+.publish p, .redeem p {
     color: #333;
 }
 
-.publish .button {
+.publish .button, .redeem .button {
     width: 150px;
     background-color: #fca428;
     text-decoration: none;
     color: white;
     padding: 15px;
-    transition: 0.5;
     border-radius: 5px;
     font-weight: bold;
     transition: 0.333s;
@@ -123,14 +133,32 @@ html, body {
     right: 50px;
     top: 50%;
     transform: translateY(-50%);
-}
-
-.publish input:focus {
-    border-color: #fca428;
+    text-align: center;
 }
 
 .publish .button:hover {
     background-color: #e38b0f;
+}
+
+.redeem {
+    text-align: center;
+}
+
+.redeem .button {
+    width: 400px;
+    max-width: 90%;
+    display: block;
+    margin: 0 auto;
+    position: static;
+    margin-top: 20px;
+    margin-bottom: 0;
+    transform: none;
+    background-color: #333;
+    color: white;
+}
+
+.redeem .button:hover {
+    color: #09a02f;
 }
 
 @media screen and (max-width: 620px) {

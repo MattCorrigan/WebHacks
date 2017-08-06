@@ -13,7 +13,7 @@
         
         <title>WebHacks 2017</title>
         
-        <link rel="stylesheet" href="dashboard.css">
+        <link rel="stylesheet" href="project.css">
         <link rel="stylesheet" href="../navbar.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
     </head>
@@ -24,46 +24,27 @@
             <h2><i class="fa fa-rocket"></i> WebHacks 2017</h2>
             <div class="links">
                 <a href="../">Home</a>
-                <a href="#">Dashboard</a>
+                <a href="../dashboard">Dashboard</a>
                 <a class="button" href="#" onclick="document.cookie = 'SID=null; path=/; expires=Thu, 18 Dec 2013 12:00:00 UTC';location.href = location.href;">Sign Out</a>
             </div>
             <i class="fa fa-bars hidden" id="toggle-nav" style="z-index:100;"></i>
         </div>
         
         <div class="left">
+            <h3>{title}</h3>
+            <p>Authors: {users}</p>
+            <a href="{link}" class="b">View Website</a>
+            <a href="{github}" class="b">View Github Repo</a>
             
-            <div class="redeem">
-                <h3>Receive a FREE .TECH Domain</h3>
-                <p>Just select WebHacks as your hackathon.</p>
-                <a href="http://get.tech/startups/?utm_source=Hckthn&utm_medium=Emlr%2FSlck&utm_campaign=WebHacks" class="button">Get Free Domain</a>
-            </div>
+            <div class="icon upvote" class="upvote" onclick="upvote({id})"><i class="fa fa-thumbs-up"></i> Upvote ({upvotes})</div>
+            <p>{description}</p>
             
-            <div class="publish">
-                <h3>Publish a Project</h3>
-                <p>Ready to show off your work?</p>
-                <a href="../publish" class="button">Add a Project</a>
-            </div>
-            
-            <div class="projects">
-                
-                <h2>Projects</h2>
-                
-                {projects}
-                
-            </div>
         </div>
         
         <script src="../navbar.js"></script>
         <script src="https://use.fontawesome.com/d0bc9af035.js"></script>
         
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-        
         <script>
-        
-            var pattern = GeoPattern.generate('GitHub', {color: "#16bc40"});
-            $('.redeem').css('background-image', pattern.toDataUrl());
         
             function getCookie(cname) {
                 var name = cname + "=";

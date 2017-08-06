@@ -49,8 +49,7 @@
             <h2><i class="fa fa-rocket"></i> WebHacks 2017</h2>
             <div class="links">
                 <a href="../">Home</a>
-                <a href="#">Dashboard</a>
-                <a href="#">My Profile</a>
+                <a href="../dashboard">Dashboard</a>
                 <a class="button" href="#" onclick="document.cookie = 'SID=null; path=/; expires=Thu, 18 Dec 2013 12:00:00 UTC';location.href = location.href;">Sign Out</a>
             </div>
             <i class="fa fa-bars hidden" id="toggle-nav" style="z-index:100;"></i>
@@ -60,6 +59,7 @@
             <h2>Submit Project</h2>
             <form method="POST" action="../publishProj">
                 <input type="text" name="pname" placeholder="Project Name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
+                --><input type="text" name="pauthors" placeholder="Authors (separate with commas)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
                 --><input type="text" name="plink" placeholder="Link, ex: 'https://myproject.com'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
                 --><input type="text" name="pgithub" placeholder="Github Repo (optional)" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><!--
                 --><textarea name="pdesc" placeholder="Put a description here..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>

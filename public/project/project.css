@@ -1,0 +1,55 @@
+html, body {
+    overflow-x: hidden;
+    background-color: #f3f3f3;
+}
+
+.left {
+    width: 900px;
+    margin: 0 auto;
+    max-width: 100%;
+    margin-top: 50px;
+    background-color: #fefefe;
+    padding: 50px;
+    position: relative;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+.b {
+    width: 150px;
+    background-color: #fca428;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.333s;
+    border:0;
+    color: white;
+    cursor: pointer;
+    margin-right: 25px;
+    line-height: 100px;
+}
+
+.upvote {
+    border: 2px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    position: absolute;
+    right: 50px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+p {
+    line-height: 1.5rem;
+}
+
+
+
+
+
+
