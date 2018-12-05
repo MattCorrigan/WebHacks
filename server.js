@@ -8,10 +8,10 @@ var fs = require("fs");
 
 var mysql      = require('mysql');
 /*var connection = mysql.createConnection({
-  host     : 'sql9.freemysqlhosting.net',
-  user     : 'sql9184046',
-  password : '6wzazXi8NV',
-  database : 'sql9184046'
+  host     : '******',
+  user     : '******',
+  password : '******',
+  database : '******'
 });*/
 
 var projectString = '<div class="project"><p class="users">Made by: {users}</p><hr><div class="content"><h3>{title}</h3><p>{desc}</p></div><hr><div class="icon upvote" onclick="upvote({id})"><i class="fa fa-thumbs-up"></i> Upvote ({upvotes})</div><div class="icon view-website"><a target="_blank" href="{link}"><i class="fa fa-eye"></i> View Website</a></div><div class="icon details"><a href="../project/?id={id}"><i class="fa fa-book"></i> More Details</a></div></div>';
